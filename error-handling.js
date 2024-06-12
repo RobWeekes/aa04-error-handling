@@ -1,20 +1,31 @@
 // 1.
 function sum(array) {
-  let sum = 0;
-  for (let i = 0; i < array.length; i++) {
-    sum += array[i];
-  }
-  return sum;
+    if(!array) {
+        throw new TypeError('arg must be an array');
+    }
+
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+    return sum;
 }
 
-let res = sum(null);
-console.log(res);
+try {
+    let res = sum(null);
+    console.log(res);
+} catch(e) {
+    console.error(`TypeError: ${e.message}`); // "TypeError: arg must be an array"
+    // console.error(e);  // console.log(e) also works
+}   // ${e.message} == 'arg must be an array'
+
+console.log('done error catching');
 
 // 2.
 // tests
 sayName("Alex");
 sayName(1);
-// Your code here 
+// Your code here
 
 // 3.
 function greet(greeting) {
@@ -24,4 +35,3 @@ function greet(greeting) {
 
   console.log(greeting);
 }
-
